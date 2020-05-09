@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'dfx()r4$k*bu5eu-#wtn0e&+3yu2mwcnre@-dsbdv7o&k7-qdx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['groceryrouting.pythonanywhere.com']
 
 
 # Application definition
@@ -125,3 +125,4 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
+STATIC_ROOT = '/home/groceryrouting/Grocery-Routing/static'

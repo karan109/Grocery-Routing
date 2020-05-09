@@ -73,7 +73,7 @@ class HomeDataAdd(LoginRequiredMixin, ModelFormSetView):
 			instance.number = ct
 			instance.save()
 		return super().formset_valid(formset)
-	
+
 	def get_success_url(self):
 		return reverse_lazy('routing-solve-agents')
 
@@ -130,7 +130,7 @@ def result(request, session_num):
 			first.delete()
 	try:
 		if not request.user.is_authenticated:
-			curr_session = Session.objects.get(user = User.objects.get(username = 'b'), session = 0)
+			curr_session = Session.objects.get(user = User.objects.all().last(), session = 0)
 		else:
 			curr_session = Session.objects.get(user = request.user, session = session_num)
 		homes = Home.objects.filter(session = curr_session).order_by('number')
@@ -175,7 +175,7 @@ def detail(request, session_num, da):
 	if(request.method == 'POST'):
 		try:
 			if not request.user.is_authenticated:
-				curr_session = Session.objects.get(user = User.objects.all().last, session = 0)
+				curr_session = Session.objects.get(user = User.objects.all().last(), session = 0)
 			else:
 				curr_session = Session.objects.get(user = request.user, session = session_num)
 			homes = Home.objects.filter(session = curr_session).order_by('number')
